@@ -6,16 +6,22 @@ using System.Threading.Tasks;
 
 namespace DoorControlFakes2
 {
-    class Door : IDoor
+    public class Door : IDoor
     {
+
+        public Door()
+        {
+
+        }
+
         public void Close()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("DOOR CLOSENING");
         }
 
         public void Open()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("DOOR OPENING");
         }
     }
 }

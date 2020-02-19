@@ -10,12 +10,12 @@ namespace DoorControlFakes2
     {
         public void NotifyEntryDenied()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Entry Denied");
         }
 
         public void NotifyEntryGranted()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Entry Granted");
         }
     }
 }

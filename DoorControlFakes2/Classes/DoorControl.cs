@@ -9,7 +9,7 @@ namespace DoorControlFakes2
     public class DoorControl
     {
         private enum DoorState
-        {            
+        {
             DoorClosed,
             DoorOpening,
             DoorClosing,
@@ -32,19 +32,32 @@ namespace DoorControlFakes2
             _doorstate = DoorState.DoorClosed;
         }
 
-        public void RequestEntry (string id)
+        public void RequestEntry(string id)
         {
-
+            if (_doorstate == DoorState.DoorClosed)
+            {
+                if (_userValidation.ValidateEntryRequest(id) == true)
+                {
+                    _door.Open();
+                    _entryNotification.NotifyEntryGranted();
+                    _doorstate = DoorState.DoorOpening;
+                }
+                else
+                {
+                    _entryNotification.NotifyEntryDenied();
+                }
+            }
         }
 
         public void DoorOpen()
-        {
-
+        {            
+            _doorstate = DoorState.DoorClosing;
+            _door.Close();
         }
 
         public void DoorClose()
-        {
-
+        {            
+            _doorstate = DoorState.DoorClosed;
         }
 
     }
