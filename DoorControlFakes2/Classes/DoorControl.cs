@@ -8,6 +8,34 @@ namespace DoorControlFakes2
 {
     public class DoorControl
     {
+        private enum DoorState
+        {            
+            DoorClosed,
+            DoorOpening,
+            DoorClosing,
+            DoorBreached
+        }
+
+        private DoorState _doorstate;
+        private IDoor _door;
+        private IEntryNotification _entryNotification;
+        private IUserValidation _userValidation;
+        private IAlarm _alarm;
+
+        public DoorControl(IDoor door, IEntryNotification entryNotification, IUserValidation userValidation, IAlarm alarm)
+        {
+            _door = door;
+            _entryNotification = entryNotification;
+            _userValidation = userValidation;
+            _alarm = alarm;
+
+            _doorstate = DoorState.DoorClosed;
+        }
+
+        public void RequestEntry (string id)
+        {
+
+        }
 
     }
 }
