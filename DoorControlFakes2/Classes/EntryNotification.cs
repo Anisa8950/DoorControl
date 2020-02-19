@@ -6,8 +6,16 @@ using System.Threading.Tasks;
 
 namespace DoorControlFakes2
 {
-    public class EntryNotification 
+    public class EntryNotification : IEntryNotification
     {
+        public void NotifyEntryDenied()
+        {
+            throw new NotImplementedException();
+        }
 
+        public void NotifyEntryGranted()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

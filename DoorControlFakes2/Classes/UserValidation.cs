@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace DoorControlFakes2
 {
-    class UserValidation
+    public class UserValidation : IUserValidation
     {
+        public bool ValidateEntryRequest(string id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
