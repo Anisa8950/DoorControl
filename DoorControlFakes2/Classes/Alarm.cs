@@ -8,5 +8,6 @@ namespace DoorControlFakes2.Classes
 {
     public class Alarm
     {
+         
     }
 }
