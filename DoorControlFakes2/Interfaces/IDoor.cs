@@ -10,8 +10,6 @@ namespace DoorControlFakes2
     {
         void Open();
         void Close();
-        void DoorOpen();
-        void DoorClosed();
 
     }
 }

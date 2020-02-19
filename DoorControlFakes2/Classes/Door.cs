@@ -13,16 +13,6 @@ namespace DoorControlFakes2
             throw new NotImplementedException();
         }
 
-        public void DoorClosed()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void DoorOpen()
-        {
-            throw new NotImplementedException();
-        }
-
         public void Open()
         {
             throw new NotImplementedException();
