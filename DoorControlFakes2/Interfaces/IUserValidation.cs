@@ -8,5 +8,6 @@ namespace DoorControlFakes2
 {
     public interface IUserValidation
     {
+        bool ValidateEntryRequest(string id);
     }
 }

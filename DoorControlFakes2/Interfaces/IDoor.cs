@@ -8,5 +8,10 @@ namespace DoorControlFakes2
 {
     public interface IDoor
     {
+        void Open();
+        void Close();
+        void DoorOpen();
+        void DoorClosed();
+
     }
 }
