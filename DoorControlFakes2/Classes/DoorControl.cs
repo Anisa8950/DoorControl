@@ -37,5 +37,15 @@ namespace DoorControlFakes2
 
         }
 
+        public void DoorOpen()
+        {
+
+        }
+
+        public void DoorClose()
+        {
+
+        }
+
     }
 }
