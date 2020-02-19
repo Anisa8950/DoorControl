@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DoorControlFakes2
 {
-    interface IUserValidation
+    public interface IUserValidation
     {
     }
 }
