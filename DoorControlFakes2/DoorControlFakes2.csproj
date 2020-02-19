@@ -74,10 +74,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\Alarm.cs" />
     <Compile Include="Classes\Door.cs" />
     <Compile Include="Classes\DoorControl.cs" />
     <Compile Include="Classes\EntryNotification.cs" />
     <Compile Include="Classes\UserValidation.cs" />
+    <Compile Include="Interfaces\IAlarm.cs" />
     <Compile Include="Interfaces\IDoor.cs" />
     <Compile Include="Interfaces\IEntryNotification.cs" />
     <Compile Include="Interfaces\IUserValidation.cs" />
