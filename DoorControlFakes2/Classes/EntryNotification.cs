@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace DoorControlFakes2
 {
-    class EntryNotification
+    public class EntryNotification 
     {
+
     }
 }
