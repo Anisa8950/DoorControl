@@ -28,7 +28,18 @@ namespace DoorControlUnitTest
         public void firstTest()
         {
 
+
+
         }
+
+        public void RequestEntry_DoorclosedAndUserValid_ doorOpenAndStateChanged()
+        {
+
+            // setup
+            _doorControl.
+
+        } 
+
 
     }
 }
