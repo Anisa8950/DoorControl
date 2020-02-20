@@ -25,9 +25,11 @@ namespace DoorControlUnitTest
         }
 
         [Test]
-        public void firstTest()
+        public void InitialStateDoorOpning_StateChangedDoorCloseningAndCloseCalled()
         {
-            uut.RequestEntry("au123456");
+            uut._doorstate = DoorControlReal.DoorState.DoorOpening;
+            uut.DoorOpen();
+            Assert.That()
         }
 
         [Test]
