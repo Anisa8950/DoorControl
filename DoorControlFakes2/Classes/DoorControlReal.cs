@@ -64,7 +64,7 @@ namespace DoorControlFakes2
         }
 
         public void DoorClose()
-        {            
+        {   
             _doorstate = DoorState.DoorClosed;
         }
 
