@@ -8,7 +8,7 @@ namespace DoorControlFakes2
 {
     public class DoorControlReal
     {
-        private enum DoorState
+        public enum DoorState
         {
             DoorClosed,
             DoorOpening,
@@ -16,7 +16,7 @@ namespace DoorControlFakes2
             DoorBreached
         }
 
-        private DoorState _doorstate;
+        public DoorState _doorstate { get; set; }
         private IDoor _door;
         private IEntryNotification _entryNotification;
         private IUserValidation _userValidation;

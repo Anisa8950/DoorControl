@@ -27,7 +27,7 @@ namespace DoorControlUnitTest
         [Test]
         public void firstTest()
         {
-
+            _doorControl.RequestEntry("au123456");
         }
 
     }
