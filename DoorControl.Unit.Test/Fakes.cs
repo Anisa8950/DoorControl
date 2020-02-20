@@ -9,8 +9,8 @@ namespace DoorControlUnitTest
 {
     public class FakeDoor : IDoor
     {
-        public int CloseCount;
-        public int Opencount;
+        public int CloseCount { get; private set; }
+        public int Opencount { get; private set; }
 
         public FakeDoor()
         {
@@ -31,9 +31,15 @@ namespace DoorControlUnitTest
 
     public class FakeAlarm : IAlarm
     {
+        public int countAlarm { get; private set; } 
+
+        public FakeAlarm()
+        {
+            countAlarm = 0;
+        }
         public void RaiseAlarm()
         {
-            throw new NotImplementedException();
+            countAlarm++;
         }
     }
 
