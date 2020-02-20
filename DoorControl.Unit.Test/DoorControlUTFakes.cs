@@ -30,13 +30,31 @@ namespace DoorControlUnitTest
             uut.RequestEntry("au123456");
         }
 
-        public void RequestEntry_DoorclosedAndUserValid_ doorOpenAndStateChanged()
+        [Test]
+        public void RequestEntry_DoorclosedAndUserValid_doorOpen()
         {
 
             // setup
-            _doorControl.
+            uut._doorstate = DoorControlReal.DoorState.DoorClosed;
+           
 
+            //act
+
+            //_userValidation.ValidateEntryRequest("1");
+            uut.RequestEntry("1");
+
+
+            //assert
+            Assert.That(_door.opencounter,Is.EqualTo(1));
+
+            Assert.That(_entryNotifation.NotifyEntryGrantedCounter, Is.EqualTo(1));
+
+            Assert.That(uut._doorstate,Is.EqualTo(DoorControlReal.DoorState.DoorOpening));
         } 
+
+
+
+
 
 
     }

@@ -9,6 +9,7 @@ namespace DoorControlUnitTest
 {
     public class FakeDoor : IDoor
     {
+        public int opencounter{get; set; }
         public void Close()
         {
             throw new NotImplementedException();
@@ -16,7 +17,7 @@ namespace DoorControlUnitTest
 
         public void Open()
         {
-            throw new NotImplementedException();
+           opencounter++;
         }
     }
 
@@ -30,6 +31,7 @@ namespace DoorControlUnitTest
 
     public class FakeEntryNotifation : IEntryNotification
     {
+        public int NotifyEntryGrantedCounter { get; set; }
         public void NotifyEntryDenied()
         {
             throw new NotImplementedException();
@@ -37,7 +39,7 @@ namespace DoorControlUnitTest
 
         public void NotifyEntryGranted()
         {
-            throw new NotImplementedException();
+            NotifyEntryGrantedCounter++;
         }
     }
 
@@ -45,7 +47,15 @@ namespace DoorControlUnitTest
     {
         public bool ValidateEntryRequest(string id)
         {
-            throw new NotImplementedException();
+            if (id=="1")
+            {
+                return true;
+            }
+
+            else
+            {
+                return false;
+            }
         }
     }
 
