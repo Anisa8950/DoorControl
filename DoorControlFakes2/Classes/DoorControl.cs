@@ -50,9 +50,17 @@ namespace DoorControlFakes2
         }
 
         public void DoorOpen()
-        {            
-            _doorstate = DoorState.DoorClosing;
-            _door.Close();
+        {   
+            if(_doorstate==DoorState.DoorOpening)
+            {
+                _doorstate = DoorState.DoorClosing;
+                _door.Close();
+
+            }else if(_doorstate==DoorState.DoorClosed)
+            {
+                _doorstate = DoorState.DoorBreached;
+                _alarm.RaiseAlarm();
+            }            
         }
 
         public void DoorClose()
