@@ -47,7 +47,7 @@ namespace DoorControlUnitTest
 
 
             //assert
-            Assert.That(_door.opencounter,Is.EqualTo(1));
+            Assert.That(_door.Opencount,Is.EqualTo(1));
 
             Assert.That(_entryNotifation.NotifyEntryGrantedCounter, Is.EqualTo(1));
 
