@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.29519.87
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DoorControlFakes2", "DoorControlFakes2\DoorControlFakes2.csproj", "{10AB8835-6AD0-43C1-88E8-38F751EA4600}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DoorControl.Unit.Test", "DoorControl.Unit.Test\DoorControl.Unit.Test.csproj", "{1073B95B-CA94-4EC6-9A6B-8632DE4449A0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DoorControlUnitTest", "DoorControl.Unit.Test\DoorControlUnitTest.csproj", "{1073B95B-CA94-4EC6-9A6B-8632DE4449A0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DoorControlFakes2;
 
-namespace DoorControl.Unit.Test
+namespace DoorControlUnitTest
 {
     public class FakeDoor : IDoor
     {

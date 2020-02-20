@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DoorControlFakes2
 {
-    public class DoorControl
+    public class DoorControlReal
     {
         private enum DoorState
         {
@@ -22,7 +22,7 @@ namespace DoorControlFakes2
         private IUserValidation _userValidation;
         private IAlarm _alarm;
 
-        public DoorControl(IDoor door, IEntryNotification entryNotification, IUserValidation userValidation, IAlarm alarm)
+        public DoorControlReal(IDoor door, IEntryNotification entryNotification, IUserValidation userValidation, IAlarm alarm)
         {
             _door = door;
             _entryNotification = entryNotification;
