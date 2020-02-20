@@ -7,7 +7,7 @@ using DoorControlFakes2;
 
 namespace DoorControl.Unit.Test
 {
-    public class FakeDoor : IDoor;
+    public class FakeDoor : IDoor
     {
         public void Close()
         {
