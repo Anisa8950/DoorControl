@@ -46,9 +46,11 @@ namespace DoorControlUnitTest
     public class FakeEntryNotifation : IEntryNotification
     {
         public int NotifyEntryGrantedCounter { get; set; }
+            
+        public int NotifyEntryDeniedCounter { get; set; }
         public void NotifyEntryDenied()
         {
-            throw new NotImplementedException();
+            NotifyEntryDeniedCounter++;
         }
 
         public void NotifyEntryGranted()
