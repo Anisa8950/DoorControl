@@ -100,7 +100,7 @@ namespace DoorControlUnitTest
         }
         #endregion
 
-        #region Method_RequestEntry
+        #region Method_RequestEntry_InitialStateClosed
 
 
         [Test]
@@ -146,6 +146,12 @@ namespace DoorControlUnitTest
 
             
         }
+
+        #endregion
+
+        #region  Method_RequestEntry_InitialStateNotClosed
+
+
 
         [Test]
         public void RequestEntry_InitialStateDorOpening_OpenNotCalledAndEntryGrantedNotCalledAndStateNotChanged()
