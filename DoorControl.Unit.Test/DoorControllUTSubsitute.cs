@@ -2,6 +2,8 @@
 using NUnit.Framework;
 using NSubstitute;
 using DoorControlFakes2;
+using NSubstitute.Core.Arguments;
+using NSubstitute.ReceivedExtensions;
 
 
 namespace DoorControl.Unit.Test
@@ -28,7 +30,7 @@ namespace DoorControl.Unit.Test
 
         #region Method_DoorOpen
         [Test]
-        public void InitialStateDoorOpning_StateChangedDoorCloseningAndCloseCalled()
+        public void InitialStateDoorOpening_StateChangedDoorCloseningAndCloseCalled()
         {
             uut._doorstate = DoorControlReal.DoorState.DoorOpening;
             uut.DoorOpen();
@@ -65,5 +67,102 @@ namespace DoorControl.Unit.Test
             _alarm.DidNotReceive().RaiseAlarm();
         }
         #endregion
+
+        #region Method_RequestEntry_DoorClosed
+
+        [Test]
+        public void RequestEntry_DoorclosedAndUserValid_OpenCalledAndEntryGrantedAndStateChangedDoorOpening()
+        {
+            //Arrange
+            uut._doorstate = DoorControlReal.DoorState.DoorClosed;
+            _userValidation.ValidateEntryRequest(Arg.Any<string>()).Returns(true);
+
+            //Act
+            uut.RequestEntry("bla");
+
+            //Assert
+            _door.Received(1).Open();
+            _entryNotifation.Received(1).NotifyEntryGranted();
+            Assert.That(uut._doorstate, Is.EqualTo(DoorControlReal.DoorState.DoorOpening));
+        }
+
+
+        [Test]
+        public void RequestEntry_DoorclosedAndUserInvalid_EntryDenied()
+        {
+            //Arrange
+            uut._doorstate = DoorControlReal.DoorState.DoorClosed;
+            _userValidation.ValidateEntryRequest(Arg.Any<string>()).Returns(false);
+
+            //Act
+            uut.RequestEntry("bla");
+
+            //Assert
+            _entryNotifation.Received(1).NotifyEntryDenied();
+        }
+        
+        #endregion
+
+        #region Method_RequestEntry_DoorNotClosed
+
+        
+        [Test]
+        public void RequestEntry_InitialStateDoorOpeningAndUserValid_SameStateAndNoCalles()
+        {
+            //Arrange
+            uut._doorstate = DoorControlReal.DoorState.DoorOpening;
+            _userValidation.ValidateEntryRequest(Arg.Any<string>()).Returns(true);
+
+            //Act
+            uut.RequestEntry("bla");
+
+            // Assert
+            _door.Received(0).Open();
+            _entryNotifation.DidNotReceive().NotifyEntryGranted();
+            Assert.That(uut._doorstate, Is.EqualTo(DoorControlReal.DoorState.DoorOpening));
+            _entryNotifation.DidNotReceive().NotifyEntryDenied();
+
+        }
+
+        [Test]
+        public void RequestEntry_InitialStateDoorClosingAndUserValid_SameStateAndNoCalles()
+        {
+            //Arrange
+            uut._doorstate = DoorControlReal.DoorState.DoorClosing;
+            _userValidation.ValidateEntryRequest(Arg.Any<string>()).Returns(true);
+
+            //Act
+            uut.RequestEntry("bla");
+
+            //Assert
+            _door.Received(0).Open();
+            _entryNotifation.DidNotReceive().NotifyEntryGranted();
+            Assert.That(uut._doorstate, Is.EqualTo(DoorControlReal.DoorState.DoorClosing));
+            _entryNotifation.DidNotReceive().NotifyEntryDenied();
+
+        }
+
+        [Test]
+        public void RequestEntry_InitialStateDorBreached_SameStateAndNoCalles()
+        {
+            //Arrange
+            uut._doorstate = DoorControlReal.DoorState.DoorBreached;
+            _userValidation.ValidateEntryRequest(Arg.Any<string>()).Returns(true);
+
+            //Act
+            uut.RequestEntry("bla");
+
+            //Assert
+            _door.Received(0).Open();
+            _entryNotifation.DidNotReceive().NotifyEntryGranted();
+            Assert.That(uut._doorstate, Is.EqualTo(DoorControlReal.DoorState.DoorBreached));
+            _entryNotifation.DidNotReceive().NotifyEntryDenied();
+        }
+
+
+        #endregion
+
+
+
     }
 }

@@ -67,7 +67,7 @@ namespace DoorControlUnitTest
         #region Metod_DoorClose
 
         [Test]
-        public void InitalStateDoorOpning_StateChangedDoorClosed()
+        public void InitalStateDoorOpening_StateChangedDoorClosed()
         {
             uut._doorstate = DoorControlReal.DoorState.DoorOpening;
             uut.DoorClose();
@@ -100,28 +100,20 @@ namespace DoorControlUnitTest
         }
         #endregion
 
-        #region Method_RequestEntry_InitialStateClosed
-
+        #region Method_RequestEntry_DoorClosed
 
         [Test]
         public void RequestEntry_DoorclosedAndUserValid_OpenCalledAndEntryGrantedAndStateChangedDoorOpening()
         {
-
-            // setup
+            //Arrange
             uut._doorstate = DoorControlReal.DoorState.DoorClosed;
-           
-
-            //act
-
             
+            //Act
             uut.RequestEntry("1");
 
-
-            //assert
+            //Assert
             Assert.That(_door.Opencount,Is.EqualTo(1));
-
             Assert.That(_entryNotifation.NotifyEntryGrantedCounter, Is.EqualTo(1));
-
             Assert.That(uut._doorstate,Is.EqualTo(DoorControlReal.DoorState.DoorOpening));
         }
 
@@ -129,23 +121,19 @@ namespace DoorControlUnitTest
         [Test]
         public void RequestEntry_DoorclosedAndUserInvalid_EntryDenied()
         {
-
-            // setup
+            //Arrange
             uut._doorstate = DoorControlReal.DoorState.DoorClosed;
 
-
-            //act
-
-
+            //Act
             uut.RequestEntry("3");
 
-
             //assert
-
             Assert.That(_entryNotifation.NotifyEntryDeniedCounter, Is.EqualTo(1));
-
-            
         }
+
+        #endregion
+
+        #region Method_RequestEntry_DoorNotClosed
 
         #endregion
 
@@ -156,70 +144,50 @@ namespace DoorControlUnitTest
         [Test]
         public void RequestEntry_InitialStateDorOpening_OpenNotCalledAndEntryGrantedNotCalledAndStateNotChanged()
         {
-
-            // setup
+            //Arrange
             uut._doorstate = DoorControlReal.DoorState.DoorOpening;
 
-            //act
-
+            //Act
             uut.RequestEntry("1");
-            
 
-            
-            //assert
+            //Assert
             Assert.That(_door.Opencount, Is.EqualTo(0));
-
             Assert.That(_entryNotifation.NotifyEntryGrantedCounter, Is.EqualTo(0));
-
             Assert.That(uut._doorstate, Is.EqualTo(DoorControlReal.DoorState.DoorOpening));
         }
 
         [Test]
         public void RequestEntry_InitialStateDoorClosing_OpenNotCalledAndEntryGrantedNotCalledAndStateNotChanged()
         {
-
-            // setup
+            //Arrange
             uut._doorstate = DoorControlReal.DoorState.DoorClosing;
 
-            //act
-
+            //Act
             uut.RequestEntry("1");
 
-
-
-            //assert
+            //Assert
             Assert.That(_door.Opencount, Is.EqualTo(0));
-
             Assert.That(_entryNotifation.NotifyEntryGrantedCounter, Is.EqualTo(0));
-
             Assert.That(uut._doorstate, Is.EqualTo(DoorControlReal.DoorState.DoorClosing));
         }
 
         [Test]
         public void RequestEntry_InitialStateDorBreached_OpenNotCalledAndEntryGrantedNotCalledAndStateNotChanged()
         {
-
-            // setup
+            //Arrange
             uut._doorstate = DoorControlReal.DoorState.DoorBreached;
 
             //act
-
             uut.RequestEntry("1");
 
-
-
-            //assert
+            //Assert
             Assert.That(_door.Opencount, Is.EqualTo(0));
-
             Assert.That(_entryNotifation.NotifyEntryGrantedCounter, Is.EqualTo(0));
-
             Assert.That(uut._doorstate, Is.EqualTo(DoorControlReal.DoorState.DoorBreached));
         }
 
 
         #endregion
-
-
 
     }
 }
