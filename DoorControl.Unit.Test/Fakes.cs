@@ -9,14 +9,23 @@ namespace DoorControlUnitTest
 {
     public class FakeDoor : IDoor
     {
+        public int CloseCount;
+        public int Opencount;
+
+        public FakeDoor()
+        {
+            CloseCount = 0;
+            Opencount = 0;
+        }
+
         public void Close()
         {
-            throw new NotImplementedException();
+            CloseCount++;
         }
 
         public void Open()
         {
-            throw new NotImplementedException();
+            Opencount++;
         }
     }
 

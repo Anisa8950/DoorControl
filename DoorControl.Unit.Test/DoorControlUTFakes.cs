@@ -7,7 +7,7 @@ namespace DoorControlUnitTest
     [TestFixture]
     public class DoorControlUTFakes
     {
-        private DoorControlReal _doorControl;
+        private DoorControlReal uut;
         private FakeAlarm _alarm;
         private FakeDoor _door;
         private FakeEntryNotifation _entryNotifation;
@@ -21,14 +21,15 @@ namespace DoorControlUnitTest
             _entryNotifation = new FakeEntryNotifation();
             _userValidation = new FakeUserValidation();
 
-            _doorControl = new DoorControlReal(_door, _entryNotifation, _userValidation, _alarm);           
+            uut = new DoorControlReal(_door, _entryNotifation, _userValidation, _alarm);           
         }
 
         [Test]
-        public void firstTest()
+        public void InitialStateDoorOpning_StateChangedDoorCloseningAndCloseCalled()
         {
-            
-
+            uut._doorstate = DoorControlReal.DoorState.DoorOpening;
+            uut.DoorOpen();
+            Assert.That()
         }
 
     }
