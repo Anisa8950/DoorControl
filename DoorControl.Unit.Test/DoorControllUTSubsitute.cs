@@ -68,6 +68,21 @@ namespace DoorControl.Unit.Test
         }
         #endregion
 
+        #region Method_DoorClose
+
+        [Test]
+        public void InitalStateDoorOpening_StateChangedDoorClosed()
+        {
+            uut._doorstate = DoorControlReal.DoorState.DoorOpening;
+            uut.DoorClose();
+            Assert.That(uut._doorstate, Is.EqualTo(DoorControlReal.DoorState.DoorClosed));
+
+        }
+
+
+
+        #endregion
+
         #region Method_RequestEntry_DoorClosed
 
         [Test]

@@ -27,6 +27,7 @@ namespace DoorControlUnitTest
         {
             Opencount++;
         }
+
     }
 
     public class FakeAlarm : IAlarm

@@ -8,12 +8,6 @@ namespace DoorControlFakes2
 {
     public class Door : IDoor
     {
-
-        public Door()
-        {
-
-        }
-
         public void Close()
         {
             Console.WriteLine("DOOR CLOSENING");

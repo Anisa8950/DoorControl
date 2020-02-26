@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace DoorControlFakes2
 {
-    public interface IDoor
+    public interface IDoor 
     {
         void Open();
         void Close();
 
+      
     }
 }

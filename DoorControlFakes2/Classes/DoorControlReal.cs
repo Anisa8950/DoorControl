@@ -16,6 +16,7 @@ namespace DoorControlFakes2
             DoorBreached
         }
 
+        
         public DoorState _doorstate { get; set; }
         private IDoor _door;
         private IEntryNotification _entryNotification;
@@ -67,6 +68,7 @@ namespace DoorControlFakes2
         {   
             _doorstate = DoorState.DoorClosed;
         }
+
 
     }
 }
